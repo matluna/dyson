@@ -1,0 +1,11 @@
+framework module Dyson {
+  umbrella header "Dyson.h"
+
+  export *
+  module * { export * }
+}
+
+module Dyson.Swift {
+    header "Dyson-Swift.h"
+    requires objc
+}

@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="dyson"
+        version="0.0.1"
+        xmlns="http://apache.org/cordova/ns/plugins/1.0">
+
+    <name>Dyson</name>
+
+    <js-module name="Dyson" src="www/Dyson.js">
+        <clobbers target="Dyson" />
+    </js-module>
+
+    <platform name="ios">
+
+        <hook type="after_plugin_add" src="hooks/addEmbedded.js" />
+        <hook type="after_plugin_add" src="hooks/add-swift-support.js" />
+
+        <config-file target="config.xml" parent="/*">
+            <feature name="Dyson">
+                <param name="ios-package" value="Dyson" onLoad="true" />
+            </feature>
+        </config-file>
+
+        <!--Bridging-Header-->
+        <header-file src="src/ios/Dyson-Bridging-Header.h"/>
+
+        <!--CDVPlugin class-->
+        <source-file src="src/ios/Dyson.swift"/>
+
+        <!--<source-file src="src/iOS/Dyson.framework" target-dir="lib" framework="true" />-->
+
+        <framework src="src/iOS/Dyson.framework" custom="true" embed="true"/>
+
+        <resource-file src="src/iOS/Dyson.framework/Enrollment.momd" target="Enrollment.momd" />
+        <!--<resource-file src="src/DB/data.db" target="data.db" />-->
+
+
+<!--        <dependency id="cordova-plugin-add-swift-support" version="1.7.2"/>-->
+
+    </platform>
+
+</plugin>
